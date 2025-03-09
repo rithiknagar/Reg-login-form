@@ -1,6 +1,8 @@
+
 const mongoose=require("mongoose");
 
 const userschema=new mongoose.Schema({
+
     fullname:{
         type:String,
         required:true,
@@ -23,7 +25,9 @@ const userschema=new mongoose.Schema({
         enum:["user","admin"],
         default:"user",
     }
+
 },{timestamps:true})
 
 const user=mongoose.model("user",userschema);
+
 module.exports=user;

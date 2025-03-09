@@ -1,6 +1,9 @@
 const jwt=require("jsonwebtoken");
+
 const secret="Rithik$Nagar";
+
 function generatetoken(user){
+
     const payload={
         _id:user._id,
         email:user.email,
@@ -16,6 +19,7 @@ function verifytoken(token){
     const payload=jwt.verify(token,secret);
     return payload;
 }
+
 module.exports={
     generatetoken,verifytoken
 }
