@@ -1,0 +1,71 @@
+<style>
+    .navbar {
+      height: 80px; 
+      display: flex;
+      align-items: center;
+    } 
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+    } 
+    .navbar .nav-link {
+      font-size: 1.2rem;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    .nav-item img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-left: 5px;
+    } 
+  </style>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Reg-Form</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <% if (locals.user) { %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= locals.user.fullname %>
+                <img src="<%= locals.user.profileImageURL %>" alt="Profile">
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/logout">LogOut</a></li>
+              </ul>
+            </li>
+          <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/signin">SignIn</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/signup">Registration</a>
+            </li>
+          <% } %> 
+        </ul>
+        <% if (locals.user) { %>
+           <div class="d-flex align-items-center">
+            <a href="/logout" class="btn btn-outline-light me-2">LogOut</a>
+        </div>
+        <% } else { %>
+          <div class="d-flex align-items-center">
+            <a href="/signin" class="btn btn-outline-light me-2">LogIn</a>
+        </div>
+        <% } %>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
